@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
     io.emit("mensajes", { nombre, mensaje });
   });
 
-  socket.on("disconnect", () s=> {
+  socket.on("disconnect", () => {
     io.emit("mensajes", {
       servidor: "Servidor",
       mensaje: `${nombre} ha abandonado la sala`,
