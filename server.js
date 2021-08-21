@@ -4,21 +4,29 @@ const http = require("http");
 const app = express();
 const servidor = http.createServer(app);
 
+
 //Inicializamos socketio
-const socketio = require("socket.io");
+//const socketio = require("socket.io");
+const socketio = require("socket.io")(httpServer, {
+  cors: {
+    origin: "http://4events.net",
+    methods: ["GET", "POST"]
+  }
+});
+
 const io = socketio(servidor);
 
 //Funcionalidad de socket.io en el servidor
 io.on("connection", (socket) => {
   let nombre;
-   socket.on("conectado", (nomb) => {
+   socket.on("conectado", () => {
        console.log("Usuario conectado")
-    nombre = nomb;
+  //  nombre = nomb;
     //socket.broadcast.emit manda el mensaje a todos los clientes excepto al que ha enviado el mensaje
-    socket.broadcast.emit("mensajes", {
-      nombre: nombre,
-      mensaje: `${nombre} ha entrado en la sala del chat`,
-     });
+    // socket.broadcast.emit("mensajes", {
+    //   nombre: nombre,
+    //   mensaje: `n${nombre} ha entrado en la sala del chat`,
+    //  });
    });
 
   socket.on("mensaje", (nombre, mensaje) => {
