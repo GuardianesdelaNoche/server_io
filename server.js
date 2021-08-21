@@ -9,7 +9,7 @@ const servidor = http.createServer(app);
 //const socketio = require("socket.io");
 const socketio = require("socket.io")(httpServer, {
   cors: {
-    origin: "http://4events.net",
+    origin: "https://4events.net",
     methods: ["GET", "POST"]
   }
 });
