@@ -5,9 +5,10 @@ const app = express();
 const servidor = http.createServer(app);
 
 
+
 //Inicializamos socketio
 //const socketio = require("socket.io");
-const socketio = require("socket.io")(httpServer, {
+const socketio = require("socket.io")(http, {
   cors: {
     origin: "https://4events.net",
     methods: ["GET", "POST"]
