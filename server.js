@@ -9,15 +9,15 @@ app.use(cors());
 
 
 //Inicializamos socketio
-const socketio = require("socket.io");
-// const io = require("socket.io")(servidor, {
-//   cors: {
-//     origin: "https://4events.net:5000/socket.io",
-//     methods: ["GET", "POST"]
-//   }
-// });
+//const socketio = require("socket.io");
+const io = require("socket.io")(servidor, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
-const io = socketio(servidor);
+//const io = socketio(servidor);
 
 //Funcionalidad de socket.io en el servidor
 io.on("connection", (socket) => {
