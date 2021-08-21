@@ -7,13 +7,13 @@ const servidor = http.createServer(app);
 
 
 //Inicializamos socketio
-//const socketio = require("socket.io");
-const socketio = require("socket.io")(servidor, {
-  cors: {
-    origin: "https://4events.net",
-    methods: ["GET", "POST"]
-  }
-});
+const socketio = require("socket.io");
+// const socketio = require("socket.io")(servidor, {
+//   cors: {
+//     origin: "https://4events.net",
+//     methods: ["GET", "POST"]
+//   }
+// });
 
 const io = socketio(servidor);
 
