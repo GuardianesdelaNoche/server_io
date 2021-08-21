@@ -1,11 +1,11 @@
 //Servidor con express
 const express = require("express");
 const http = require("http");
-var cors = require('cors')
+//var cors = require('cors')
 const app = express();
 const servidor = http.createServer(app);
 
-app.use(cors());
+//app.use(cors());
 
 
 //Inicializamos socketio
@@ -22,8 +22,8 @@ const io = require("socket.io")(servidor, {
 //Funcionalidad de socket.io en el servidor
 io.on("connection", (socket) => {
   let nombre;
-   socket.on("conectado", () => {
-       console.log("Usuario conectado")
+   socket.on("conectado", (nomb) => {
+       console.log("Usuario conectado: ",nomb)
   //  nombre = nomb;
     //socket.broadcast.emit manda el mensaje a todos los clientes excepto al que ha enviado el mensaje
     // socket.broadcast.emit("mensajes", {
